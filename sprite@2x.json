@@ -1,23 +1,23 @@
 {
   "grass": {
-    "height": 1024,
-    "width": 1024,
+    "height": 256,
+    "width": 256,
     "pixelRatio": 1,
     "x": 0,
     "y": 0
   },
   "water": {
-    "height": 1024,
-    "width": 1024,
+    "height": 256,
+    "width": 256,
     "pixelRatio": 1,
-    "x": 1024,
+    "x": 256,
     "y": 0
   },
   "road": {
-    "height": 1024,
-    "width": 1024,
+    "height": 256,
+    "width": 256,
     "pixelRatio": 1,
     "x": 0,
-    "y": 1024
+    "y": 256
   }
 }
