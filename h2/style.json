@@ -23,12 +23,24 @@
   "bearing": 0,
   "pitch": 0,
   "sources": {
+    "open_zoomstack": {
+      "type": "vector",
+      "url": "https://s3-eu-west-1.amazonaws.com/tiles.os.uk/v2/data/vector/open-zoomstack/config.json"
+    },
     "openmaptiles": {
       "type": "vector",
       "url": "https://api.maptiler.com/tiles/v3/tiles.json?key={key}"
+    },
+    "thunderforest_transport": {
+      "type": "vector",
+      "url": "https://tile.thunderforest.com/thunderforest.transport-v2.json?apikey={key}"
+    },
+    "thunderforest_outdoors": {
+      "type": "vector",
+      "url": "https://tile.thunderforest.com/thunderforest.outdoors-v2.json?apikey={key}"
     }
   },
-  "sprite": "https://raw.githubusercontent.com/nileplumb/sprite/main/sprite/halloween",
+  "sprite": "https://raw.githubusercontent.com/nileplumb/sprite/main/sprite/h2",
   "glyphs": "https://api.maptiler.com/fonts/{fontstack}/{range}.pbf?key={key}",
   "layers": [
     {
@@ -81,15 +93,15 @@
       "layout": {"visibility": "visible"},
       "paint": {
         "fill-translate": [0, 2.5],
-        "fill-pattern": "water",
-        "fill-opacity": 0.05
+        "fill-opacity": 0.05,
+        "fill-pattern": "water"
       }
     },
     {
-      "id": "road-outline",
+      "id": "road-outline-copy",
       "type": "line",
-      "source": "openmaptiles",
-      "source-layer": "transportation",
+      "source": "thunderforest_transport",
+      "source-layer": "road",
       "filter": ["all", ["!=", "class", "rail"]],
       "layout": {
         "line-cap": "round",
@@ -101,6 +113,40 @@
         "line-width": {
           "stops": [[6, 0.8], [11, 2.75], [14, 4.5], [16, 7.5], [20, 10]]
         }
+      }
+    },
+    {
+      "id": "road-outline",
+      "type": "line",
+      "source": "openmaptiles",
+      "source-layer": "transportation",
+      "filter": ["all", ["!=", "class", "rail"]],
+      "layout": {
+        "line-cap": "round",
+        "line-join": "miter",
+        "line-miter-limit": 2,
+        "visibility": "none"
+      },
+      "paint": {
+        "line-color": "#FFAF67",
+        "line-width": {
+          "stops": [[6, 0.8], [11, 2.75], [14, 4.5], [16, 7.5], [20, 10]]
+        }
+      }
+    },
+    {
+      "id": "road-pattern",
+      "type": "line",
+      "source": "openmaptiles",
+      "source-layer": "transportation",
+      "filter": ["all", ["!=", "class", "rail"]],
+      "layout": {"line-cap": "round"},
+      "paint": {
+        "line-width": {
+          "stops": [[6, 0.5], [11, 2], [14, 3.5], [16, 6], [20, 8]]
+        },
+        "line-pattern": "road",
+        "line-opacity": 0.3
       }
     },
     {
@@ -118,21 +164,6 @@
       }
     },
     {
-      "id": "road-texture",
-      "type": "line",
-      "source": "openmaptiles",
-      "source-layer": "transportation",
-      "filter": ["all", ["!=", "class", "rail"]],
-      "layout": {"line-cap": "round"},
-      "paint": {
-        "line-width": {
-          "stops": [[6, 0.5], [11, 2], [14, 3.5], [16, 6], [20, 8]]
-        },
-        "line-pattern": "road",
-        "line-opacity": 0.3
-      }
-    },
-    {
       "id": "buildings",
       "type": "fill",
       "source": "openmaptiles",
@@ -147,7 +178,7 @@
         ["!=", "class", "commercial"]
       ],
       "layout": {"visibility": "visible"},
-      "paint": {"fill-color": "#9B9654", "fill-opacity": 0.5}
+      "paint": {"fill-color": "rgba(155, 150, 84, 1)", "fill-opacity": 0.5}
     },
     {
       "id": "place_label_city",
