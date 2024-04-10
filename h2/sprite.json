@@ -26,5 +26,19 @@
     "pixelRatio": 1,
     "x": 128,
     "y": 128
+  },
+  "leaves": {
+    "height": 256,
+    "width": 256,
+    "pixelRatio": 1,
+    "x": 0,
+    "y": 256
+  },
+  "leaves-small": {
+    "height": 128,
+    "width": 128,
+    "pixelRatio": 1,
+    "x": 0,
+    "y": 512
   }
 }
