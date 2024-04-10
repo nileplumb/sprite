@@ -28,7 +28,7 @@
       "url": "https://api.maptiler.com/tiles/v3/tiles.json?key={key}"
     }
   },
-  "sprite": "https://raw.githubusercontent.com/nileplumb/sprite/main/sprite",
+  "sprite": "https://raw.githubusercontent.com/nileplumb/sprite/main/2024/sprite",
   "glyphs": "https://api.maptiler.com/fonts/{fontstack}/{range}.pbf?key={key}",
   "layers": [
     {
@@ -39,7 +39,7 @@
     {
       "id": "background-texture",
       "type": "background",
-      "paint": {"background-pattern": "ground", "background-opacity": 0.5}
+      "paint": {"background-pattern": "ground", "background-opacity": 0.25}
     },
     {
       "id": "grass-landuse",
@@ -80,9 +80,22 @@
       "filter": ["all", ["==", "class", "cemetery"]],
       "layout": {"visibility": "visible"},
       "paint": {
-        "fill-opacity": 0.5,
+        "fill-opacity": 1,
         "fill-translate-anchor": "map",
         "fill-pattern": "grass"
+      }
+    },
+    {
+      "id": "grass-pedestrian-texture",
+      "type": "fill",
+      "source": "openmaptiles",
+      "source-layer": "transportation",
+      "filter": ["all", ["in", "subclass", "pedestrian"]],
+      "layout": {"visibility": "visible"},
+      "paint": {
+        "fill-translate-anchor": "map",
+        "fill-pattern": "grass",
+        "fill-opacity": 1
       }
     },
     {
@@ -106,7 +119,7 @@
       ],
       "layout": {"visibility": "visible"},
       "paint": {
-        "fill-opacity": 0.5,
+        "fill-opacity": 1,
         "fill-translate-anchor": "map",
         "fill-pattern": "grass"
       }
@@ -149,7 +162,6 @@
           "!in",
           "class",
           "retail",
-          "residential",
           "industrial",
           "railway",
           "commercial"

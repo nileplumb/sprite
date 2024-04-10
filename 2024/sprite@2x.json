@@ -6,6 +6,13 @@
     "x": 0,
     "y": 0
   },
+  "grass-large": {
+    "height": 512,
+    "width": 512,
+    "pixelRatio": 1,
+    "x": 0,
+    "y": 512
+  },
   "water": {
     "height": 256,
     "width": 256,
